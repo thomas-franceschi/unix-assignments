@@ -18,6 +18,13 @@ if ! command -v elinks > /dev/null; then
     exit 3
 fi
 
-exec markdown_py $@ | \
-     elinks -force-html -dump -dump-width $(tput cols) -no-numbering -no-references | \
+stylize() {
+     sed -e 's|pre>|p style="color:green;">|g' \
+	 -e 's|<h\([0-9]\)>|<h\1 style="color:yellow;">|g' \
+	 -e 's|<strong>|<strong style="color:magenta;">|g'
+}
+
+exec markdown_py $@ |
+     stylize |
+     elinks -force-html -dump -dump-width $(tput cols) -dump-color-mode 1 -no-numbering -no-references |
      less
