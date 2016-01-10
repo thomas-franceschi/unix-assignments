@@ -9,13 +9,13 @@ fi
 
 if ! command -v markdown_py > /dev/null; then
     echo "error: you need to install markdown_py!"
-    exit 1
+    exit 2
 fi
 
 
 if ! command -v elinks > /dev/null; then
     echo "error: you need to install elinks!"
-    exit 2
+    exit 3
 fi
 
 exec markdown_py $@ | \
