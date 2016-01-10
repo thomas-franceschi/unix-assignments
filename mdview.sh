@@ -2,14 +2,19 @@
 
 export PATH=/afs/nd.edu/user15/pbui/pub/anaconda-2.3.0/bin:$PATH
 
+if [ $# != 1 ]; then
+    echo "usage: $0 path"
+    exit 1
+fi
+
 if ! command -v markdown_py > /dev/null; then
-    echo "You need to install markdown_py!"
+    echo "error: you need to install markdown_py!"
     exit 1
 fi
 
 
 if ! command -v elinks > /dev/null; then
-    echo "You need to install elinks!"
+    echo "error: you need to install elinks!"
     exit 2
 fi
 
