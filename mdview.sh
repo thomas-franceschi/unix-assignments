@@ -27,4 +27,4 @@ stylize() {
 exec markdown_py $@ |
      stylize |
      elinks -force-html -dump -dump-width $(tput cols) -dump-color-mode 1 -no-numbering -no-references |
-     less
+     less -Rcgm
