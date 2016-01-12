@@ -4,7 +4,7 @@ TLDR - git
 Overview
 --------
 
-[Git] is a source distributed version control system.
+[Git] is a distributed version control system.
 
 Examples
 --------
