@@ -3,7 +3,7 @@ Assignments
 
 This is the [CSE-20189-SP16] reading and homework assignments repository for:
 
-* **Name**:  Thomas Franceschi 
+* **Name**:  Thomas Franceschi
 * **NetID**: tfrances
 
 Readings
