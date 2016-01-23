@@ -36,10 +36,12 @@ think they are broken because the objects they point to no longer
 exist.
 
 3. 
+
     $ time cp images pixmaps
     0.000u 0.000s 0:00.00 0.0%	0+0k 0+0io 0pf+0w
     
 4. 
+
     $ time cp pixmaps /tmp/tfrances-pixmaps
     0.003u 0.047s 0:01.14 3.5%	0+0k 0+4800io 0pf+0w
     
