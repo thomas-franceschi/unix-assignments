@@ -6,21 +6,26 @@ tfrances
 **Excercise 1:**
 ----------------
 1. 
+
     $ cd /afs/nd.edu/user14/csesoft
     
 2. 
+ 
     $ cd ../../user14/csesoft
     
 3. 
+ 
     $ cd ~/../../user14/csesoft
     
 4. 
+ 
     $ ln -s /afs/nd.edu/user14/csesoft
     
 **Excercise 2:**
 ----------------
 1. 
     $ mkdir ~/image
+    
     $ cp -r /usr/share/pixmaps/* ~/images
     
 2. Yes, I know because when I used the
@@ -35,7 +40,7 @@ exist.
     0.000u 0.000s 0:00.00 0.0%	0+0k 0+0io 0pf+0w
     
 4. 
-    $time cp pixmaps /tmp/tfrances-pixmaps
+    $ time cp pixmaps /tmp/tfrances-pixmaps
     0.003u 0.047s 0:01.14 3.5%	0+0k 0+4800io 0pf+0w
     
 This operation is slower because it is actually making new copies of 
@@ -102,6 +107,7 @@ flags to determine the number of files in that specific directory.
 1. The user and members of that user's group can read it, but no other users
 
 2. 
+
     a. $ chmod 600 data.txt
     b. $ chmod 770 data.txt
     c. $ chmod 444 data.txt
