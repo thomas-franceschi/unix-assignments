@@ -23,32 +23,32 @@ tfrances
     
 **Excercise 2:**
 ----------------
-1. 
+1) 
+
     $ mkdir ~/image
-    
     $ cp -r /usr/share/pixmaps/* ~/images
     
-2. Yes, I know because when I used the $ ls -l command the names of certain links are red with black backgrounds 
+2) Yes, I know because when I used the $ ls -l command the names of certain links are red with black backgrounds 
 (on my ubuntu machine), which corresponds to a broken symlink. I
 think they are broken because the objects they point to no longer
 exist.
 
-3. 
-    $ time cp images pixmaps
-    
+3)
+ 
+    $ time cp images pixmaps  
     0.000u 0.000s 0:00.00 0.0%	0+0k 0+0io 0pf+0w
     
-4. 
+4) 
 
     $ time cp pixmaps /tmp/tfrances-pixmaps
-    
     0.003u 0.047s 0:01.14 3.5%	0+0k 0+4800io 0pf+0w
     
 This operation is slower because it is actually making new copies of 
 the files to a new location on the disk, not just renaming the directory 
 they are in.
 
-5. 
+5)
+
     $ time rm -r /tmp/tfrances-pixmaps
     0.000u 0.007s 0:00.02 0.0%	0+0k 0+0io 0pf+0w
     
@@ -58,15 +58,15 @@ single location.
 
 **Exercise 3:**
 ---------------
-1. 
+1)
 
     $ ls -lh /afs/nd.edu/user37/ccl/software
 
-2. 
+2)
 
     $ ls -lt /afs/nd.edu/user37/ccl/software
     
-3. 
+3) 
 
     $ cd /afs/nd.edu/user37/ccl/software/cctools/x86_64
     $ ls -1R | wc -l
@@ -76,13 +76,13 @@ subdirectory and -1 lists them all on an individual line, which is then
 piped to the wc -l function that counts the number of lines printed, 
 which corresponds to the number of files.
 
-4. 
+4)
 
     $ cd /afs/nd.edu/user37/ccl/software/cctools/x86_64
     $ find . -name weaver
 It does contain weaver.
 
-5.
+5)
  
     $ cd /afs/nd.edu/user37/ccl/software/cctools/x86_64
     $ du -sh *
