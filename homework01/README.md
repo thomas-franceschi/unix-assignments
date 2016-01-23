@@ -29,14 +29,15 @@ tfrances
     $ cp -r /usr/share/pixmaps/* ~/images
     
 2. Yes, I know because when I used the
+
     $ ls -l
+    
 command the names of certain links are red with black backgrounds 
 (on my ubuntu machine), which corresponds to a broken symlink. I
 think they are broken because the objects they point to no longer
 exist.
 
-3. 
-
+3)
     $ time cp images pixmaps
     0.000u 0.000s 0:00.00 0.0%	0+0k 0+0io 0pf+0w
     
