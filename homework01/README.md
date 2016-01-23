@@ -5,19 +5,19 @@ tfrances
 
 **Excercise 1:**
 ----------------
-1. 
+1)
 
     $ cd /afs/nd.edu/user14/csesoft
     
-2. 
+2) 
  
     $ cd ../../user14/csesoft
     
-3. 
+3) 
  
     $ cd ~/../../user14/csesoft
     
-4. 
+4) 
  
     $ ln -s /afs/nd.edu/user14/csesoft
     
@@ -28,11 +28,7 @@ tfrances
     
     $ cp -r /usr/share/pixmaps/* ~/images
     
-2. Yes, I know because when I used the
-
-    $ ls -l
-    
-command the names of certain links are red with black backgrounds 
+2. Yes, I know because when I used the $ ls -l command the names of certain links are red with black backgrounds 
 (on my ubuntu machine), which corresponds to a broken symlink. I
 think they are broken because the objects they point to no longer
 exist.
@@ -81,11 +77,13 @@ piped to the wc -l function that counts the number of lines printed,
 which corresponds to the number of files.
 
 4. 
+
     $ cd /afs/nd.edu/user37/ccl/software/cctools/x86_64
     $ find . -name weaver
 It does contain weaver.
 
-5. 
+5.
+ 
     $ cd /afs/nd.edu/user37/ccl/software/cctools/x86_64
     $ du -sh *
     23M	osx-10.9
@@ -96,6 +94,7 @@ usage and the -s flag puts it in list form and the -h uses human readable
 file sizes. The * ensures that each subdirectory is counted individually.
 
 6. 
+
     $ cd redhat5
     $ ls -1R | wc -l
     858
