@@ -93,7 +93,7 @@ redhat5 is the largest subdirectory by size. The du command lists the disk
 usage and the -s flag puts it in list form and the -h uses human readable 
 file sizes. The * ensures that each subdirectory is counted individually.
 
-6. 
+6) 
 
     $ cd redhat5
     $ ls -1R | wc -l
@@ -101,33 +101,33 @@ file sizes. The * ensures that each subdirectory is counted individually.
 I moved to the largest directory then used the same ls and wc commands and 
 flags to determine the number of files in that specific directory.
 
-7. 
+7)
+
     $ find . -printf '%s %p\n' | sort -nr | head -1
     18534130 ./redhat5/bin/parrot_run_hdfs
 
-8. 
+8) 
+
     $ find . -mtime +30 | wc -l
     2026
     
 **Exercise 4:**
 ---------------
-1. The user and members of that user's group can read it, but no other users
+1)The user and members of that user's group can read it, but no other users
 
-2. 
+2) 
 
     a. $ chmod 600 data.txt
-    
     b. $ chmod 770 data.txt
-    
     c. $ chmod 444 data.txt
-    
     d. $ chmod 000 data.txt
     
-3. If there are no permissions on a file, only the root user can delete it.
+3) If there are no permissions on a file, only the root user can delete it.
 
 **Exercise 5:**
 ---------------
-1. 
+1)
+ 
     $ fs listacl /afs/nd.edu/user19/tfrances
     Access list for /afs/nd.edu/user19/tfrances is
     Normal rights:
@@ -157,7 +157,8 @@ For my public folder: Anyone in nd_campus can read, lookup, and lock files,
 as well as authorized users, and and myself and administrators both have full 
 access rights.
 
-2. 
+2)
+
     $ fs listacl /afs/nd.edu/common
     Access list for /afs/nd.edu/common is
     Normal rights:
@@ -172,20 +173,24 @@ access rights.
 I was unable to create a file becuase I only have read access to this file 
 system, not write privelidges.
 
-3. 
+3)
+ 
     $ fs setacl -dir /afs/nd.edu/user19/tfrances/shared_folder -acl instructor read
     
 **Exercise 6:**
 ---------------
-1. 
+1)
+ 
     $ umask 000
     $ touch world1.txt
     
-2. 
+2)
+ 
     $ umask 022
     $ touch world2.txt
     
-3. 
+3)
+ 
     $ umask 044
     $ touch world3.txt
     
