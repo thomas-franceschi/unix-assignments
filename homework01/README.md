@@ -37,13 +37,15 @@ command the names of certain links are red with black backgrounds
 think they are broken because the objects they point to no longer
 exist.
 
-3)
+3. 
     $ time cp images pixmaps
+    
     0.000u 0.000s 0:00.00 0.0%	0+0k 0+0io 0pf+0w
     
 4. 
 
     $ time cp pixmaps /tmp/tfrances-pixmaps
+    
     0.003u 0.047s 0:01.14 3.5%	0+0k 0+4800io 0pf+0w
     
 This operation is slower because it is actually making new copies of 
@@ -61,12 +63,15 @@ single location.
 **Exercise 3:**
 ---------------
 1. 
+
     $ ls -lh /afs/nd.edu/user37/ccl/software
 
 2. 
+
     $ ls -lt /afs/nd.edu/user37/ccl/software
     
 3. 
+
     $ cd /afs/nd.edu/user37/ccl/software/cctools/x86_64
     $ ls -1R | wc -l
     2199
@@ -112,8 +117,11 @@ flags to determine the number of files in that specific directory.
 2. 
 
     a. $ chmod 600 data.txt
+    
     b. $ chmod 770 data.txt
+    
     c. $ chmod 444 data.txt
+    
     d. $ chmod 000 data.txt
     
 3. If there are no permissions on a file, only the root user can delete it.
