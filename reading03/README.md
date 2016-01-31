@@ -1,17 +1,17 @@
 Reading 03
 ==========
 
-1. 
+1.
 
-2. 
+2.
 
     $ ldd /bin/ls
     
-3. 
+3.
 
     $ strace ls
     
-4. 
+4.
 
     $ make hello-debug
     $ gdb a.out
@@ -19,7 +19,7 @@ Reading 03
 Then use the different gdb commands to step through the program, check 
 values of variables, etc.
 
-5. 
+5.
 
     $ valgrind --leak-check=yes ./a.out
     ==11315== Memcheck, a memory error detector
@@ -37,7 +37,7 @@ values of variables, etc.
     ==11315== For counts of detected and suppressed errors, rerun with: -v
     ==11315== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
     
-6. 
+6.
 
     $ make hello-profile
     $ ./a.out //generates gmon.out file
