@@ -3,6 +3,8 @@ Reading 03
 
 1.
 
+    $ man ls
+    
 2.
 
     $ ldd /bin/ls
@@ -14,7 +16,7 @@ Reading 03
 4.
 
     $ make hello-debug
-    $ gdb a.out
+    $ gdb hello-debug
     
 Then use the different gdb commands to step through the program, check 
 values of variables, etc.
@@ -40,5 +42,5 @@ values of variables, etc.
 6.
 
     $ make hello-profile
-    $ ./a.out //generates gmon.out file
-    $ gprof a.out
+    $ ./hello-profile //generates gmon.out file
+    $ gprof hello-profile

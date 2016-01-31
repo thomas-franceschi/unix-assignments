@@ -1,15 +1,16 @@
 all: hello-dynamic hello-static hello-debug hello-profile
 
-hello-dynamic: 
+hello-dynamic:
+    gcc hello.c -o hello-dynamic
+    
+hello-static:
+    gcc -static hello.c -o hello-static
 
-hello-static: 
-    gcc -static hello.c
+hello-debug:
+    gcc -g hello.c -o hello-debug
 
-hello-debug: 
-    gcc -g hello.c
+hello-profile:
+    gcc -pg hello.c -o hello-profile
 
-hello-profile: 
-    gcc -pg hello.c
-
-clean: 
+clean:
     rm hello-*
