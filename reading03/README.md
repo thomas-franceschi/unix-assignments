@@ -3,7 +3,7 @@ Reading 03
 
 1.
 
-    $ man ls
+    $ strace -o ls.txt ls
     
 2.
 
