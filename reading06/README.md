@@ -10,7 +10,7 @@ Reading 06
     /bin/bash
     
 3.
-    $ echo "monkeys love bananas" | sed "s/monkeys/gorillaz/"
+    $ echo "monkeys love bananas" | sed "s/monkeys/gorillaz/g"
     gorillaz love bananas
     
 4.
