@@ -3,7 +3,6 @@
 
 num=10
 flag=0
-SUB=$1
 
 while getopts rsn: i
 do
@@ -16,35 +15,25 @@ do
 	esac
 done
 
-if [[ $num =~  ^[A-Za-z_]+$ ]]
-	then
-	num=10
-	SUB=$2
-fi
-
-echo "flag is $flag"
-echo "num is $num"
-echo "subreddit is $SUB"
 shift $((OPTIND-1))
 
 if [ $flag -eq 1 ]
 	then
-	curl -s http://www.reddit.com/r/$SUB/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | shuf | uniq
+	curl -s http://www.reddit.com/r/$1/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | sed 's/\"url\"://g' | shuf | uniq
 	exit;
 fi
 
 if [ $flag -eq 2 ]
         then
-        curl -s http://www.reddit.com/r/$SUB/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | sort | uniq
+        curl -s http://www.reddit.com/r/$1/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | sed 's/\"url\"://g' | sort | uniq
 	exit;
 fi
 
 if [ $flag -eq 3 ]
-	echo "reached third flag"
 	then
-       	curl -s http://www.reddit.com/r/$SUB/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | head -n $num
+       	curl -s http://www.reddit.com/r/$1/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | sed 's/\"url\"://g' |head -n $num
 	exit;
 fi
 
-curl -s http://www.reddit.com/r/$SUB/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | uniq
+curl -s http://www.reddit.com/r/$1/.json | python -m json.tool | grep "\"url\":" | sed 's/\s//g' | sed 's/\"url\"://g' | uniq
 exit;
