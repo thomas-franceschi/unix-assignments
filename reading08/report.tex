@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\title{Reading 08: Document Tools}
+\date{14 March, 2016}
+\author{Thomas Franceschi}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\maketitle
+
+%------------------------------------------------------
+
+\section*{Overview}
+
+For this expriment, I created {\bf three} scripts:
+
+\begin{enumerate}
+
+\item{\tt rolldice.sh}: This script simulates rolling a dice.
+
+\item{\tt experiment.sh}: This script uses rolldice.sh to perform an experiment and then collect that data into results.dat
+
+\item{\tt histogram.plt}: This script uses gnuplot to create a graph of the data in results.dat.
+
+\end{enumerate}
+
+\section*{Rolling Dice}
+
+First, I created a script called roll dice.sh that uses the shuf command to simulate rolling a dice and set up flags
+to modify the number of sides and the number of rolls to be done. Each "roll" randomly shuffles a list of all possible 
+numbers on the dice then I use the head function to record only the first member of the list as the "winner".
+
+\begin{verbatim}
+$ ./roll_dice.sh -h
+usage: roll_dice.sh [-r ROLLS -s sides]
+
+-r ROLLS    Number of rolls of die (default: 10)
+-s SIDES    Number of sides on die (default: 6)
+
+\end{verbatim}
+
+\section*{Experiment}
+
+Second, I created a script called experiment.sh that uses the roll dice.sh and the -r flag with 1000 as the modifier to simulate 
+1000 rolls of the dice. I then used {\bf awk} to sum the occurnces of each number that was rolled and output it to a file called results.dat
+
+
+
+
+
+
+
+
+\section*{Results}
+
+Table 1 contains the results of my experiment of rolling a dice 1000 times.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{r||c}
+    Side	& Counts\\
+    \hline
+    1	& 151\\
+    2	& 174\\
+    3	& 172\\
+    4	& 178\\
+    5	& 156\\
+    6	& 169\\
+    \end{tabular}
+    \caption{Example Tables}
+    \label{tbl:example}
+\end{table}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{results.png}
+\caption{Graph}
+\label{fig:graph}
+\end{figure}
+
+\end{document}
