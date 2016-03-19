@@ -1,0 +1,129 @@
+\documentclass{article}
+
+\title{Gender and Ethnicity in Computer Science at Notre Dame}
+\date{18 March, 2016}
+\author{Thomas Franceschi \\ tfrances@nd.edu}
+
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=.8in]{geometry}
+
+\begin{document}
+
+\maketitle
+
+%------------------------------------------------------
+
+\section*{Overview}
+
+For this homework, I had to parse the data in a csv file into data files and then readable graphs to understand the data 
+being pesented in them. The data being observed was the gender and racial composition of students 
+studying computer science at Notre Dame. I wrote two shell scripts to parse the gender and ethnicity data 
+respectively that used i/o redirection and piping to read the csv file and turn it into meaningful, human 
+readable data with counts of students of eachgender and ethnicity according to graduation year. I then wrote to 
+gnuplot scripts to convert the .dat files into plots which make the data much more easy to visualize and understand.
+
+\section*{Methodology}
+
+I wrote two shell scripts (gender.sh and ethnicity.sh) which each parsed the 
+file and tallied the number of people of each gender and ethnicity according to graduation year. I 
+accomplished this by echoing a header of "Year Men Women" seperated by tabs and directing it into an 
+output file named gender.dat, and the same for ethnicity.dat but with the different ethnicities as the 
+headers. Once those new files are created I have a while loop that runs as long as the year variable is 
+less than 2019 (it is initialized to 2013). I then cat the file to be parsed, pipe it into a cut command 
+that cuts the gender (or ethnicity) column of the corresponding year, then use grep to filter for only 
+the letters to be counted (MF/COSBNTU). After that I use awk to count the instances of each lettter for 
+each graduating year and print the tally next to the corresponding year and under the corresponding group 
+header and append it to the .dat file that was initially created. The loop then continues until it has 
+gone through all possible years. One interesting problem I found was being able to genereate a .dat file 
+then running the script again and not just adding to the existing file but creating a new one. I solved this 
+by generating the header before the while loop so it overwrites any previous .dat file of the same name, since 
+all of the data being parsed is simply appended to an existing file.\\ \\
+To create the graphs, I use gnuplot and set a static range, set the style to a histogram cluster, set the 
+terminal png output size and destination of the output (gender.png/ethnicity.png), along with some other 
+style settings, and then I plot the corresponding columns (2:3 for gender and 2:8 for ethnicity) using the 
+first line of each entry column as the title. One problem I found was when it was generating the key it would split 
+African American into two groups and list "African" where "African American" should be and "American" where 
+"Native American" should be. I solved this by simply replacing the space with an underscore so it is read as one continuous 
+word. I am sure there is a less hackey way to solve this issue that retains the space, but that was the easiest 
+solution I could come up with.
+
+\section*{Analysis}
+
+In this section you can see tables and graphs visualizing the gender and ethnic make up of the students in the Computer 
+Science major at Notre Dame. As it is plainly obvious, Caucasian male is the largest group of students with both the 
+numbers of male and white students growing year over year very consistently. The number of women is consistently 
+growing as well, but not at a pace where it seems they can catch up to men any time soon. The number of non-white 
+students appears to not be increasing nearly as much as the white students and seems mostly stagnant.
+
+\begin{table}[H]
+\centering
+\caption{Gender Distribution by Year}
+\label{Gender}
+\begin{tabular}{l|l|l}
+Year & Men & Women \\ \hline
+2013 & 49  & 14    \\ \hline
+2014 & 44  & 12    \\ \hline
+2015 & 58  & 16    \\ \hline
+2016 & 60  & 19    \\ \hline
+2017 & 65  & 26    \\ \hline
+2018 & 90  & 36   
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{gender.png}
+\caption{Graph}
+\label{fig:Gender}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Distribution of Ethnicity by Year}
+\label{Ethnicity}
+\begin{tabular}{c|c|c|c|c|c|c|c}
+Year & Caucasian & Oriental & Hispanic & African American & Native American & Multiple Selection & Undeclared \\ \hline
+2013 & 43        & 147      & 7        & 3                & 1               & 2                  & 0          \\ \hline
+2014 & 43        & 125      & 4        & 2                & 1               & 1                  & 0          \\ \hline
+2015 & 47        & 9        & 10       & 4                & 1               & 1                  & 2          \\ \hline
+2016 & 53        & 199      & 9        & 1                & 7               & 0                  & 0          \\ \hline
+2017 & 60        & 2612     & 3        & 5                & 5               & 6                  & 0          \\ \hline
+2018 & 91        & 8        & 12       & 3                & 4               & 8                  & 0         
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{ethnicity.png}
+\caption{Graph}
+\label{fig:Ethnicity}
+\end{figure}
+
+
+\section*{Discussion}
+
+I think gender and racial diversity are both very important in general, as well as in regard to the Computer Science and 
+Engineering department here at Notre Dame. Gender and ethnic diversity give us the opportunity to draw from as many 
+different points of view as possible, which is very important in helping solve problems in the everyday lives of different 
+people. I think that while there is no easy way to increase diversity, the department here at Notre Dame, as well 
+as computer science programs around the country should work to fight the stigma that computer science is exclusively 
+for white males, and that anyone can be a programmer. The numbers paint a very vivid picture that, while more women 
+begining to take an interest in computer science here(though at a slower rate then men), the same cannot be said for minorities. This is exactly why I think 
+they should help fight the common computer science stereotypes because it makes the major seem less appealing to 
+non-white, non-male students.
+
+I think the computer science and engineering department here does a very good job of being welcoming to all kinds 
+of people and I'm not sure there is much they could be doing here to improve the situation. I think the problem begins 
+before students ever step foot in a departmental class, but when they decide their majors or intended majors either 
+senior year of high school or freshman year here. 
+
+Overall I would say that while diversity (both of gender and ethnicity) is severely lacking in the computer science and 
+engineering department here at Notre Dame, I believe there is no easy way to increase it by our own actions here on campus, but it 
+is a nationwide problem that begins with changing the public perception of what it means to be a computer science student 
+and who is able to be one (the answer is everyone).
+
+
+
+\end{document}
