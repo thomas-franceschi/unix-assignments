@@ -24,7 +24,7 @@ for o, a in opts:
 		WORD = True
 	else:
 		print "ERROR: enter valid flag"
-	sys.exit(1)
+		sys.exit(1)
 
 if len(args) == 0:
 	args.append('-')
