@@ -103,7 +103,7 @@ def include(path):
 	if "-newer" in totArgs:
 		if isSymLink(path):
 			return
-		if os.stat(totArgs["-newer"]).st_utime >= os.stat(path).st_utime:
+		if os.stat(totArgs["-newer"]).st_mtime >= os.stat(path).st_mtime:
 			return
 
 	if "-gid" in totArgs:
@@ -115,7 +115,7 @@ def include(path):
 
 	if "-uid" in totArgs:
 		try:
-			if not int(totArgs["-uid"]) == int(os.stat(path).st_gid):
+			if not int(totArgs["-uid"]) == int(os.stat(path).st_uid):
 				return
 		except OSError:
 			pass
