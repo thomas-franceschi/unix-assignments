@@ -1,6 +1,5 @@
 #!/usr/bin/env python2.7
 
-import getopt
 import os
 import sys
 
@@ -11,8 +10,8 @@ input_file = 0
 output_file = 1
 bs = 512
 count = sys.maxint
-seek = 0
-skip = 0
+seek = 1
+skip = 1
 
 
 # Functions
@@ -21,8 +20,20 @@ def open_fd(path, mode):
     try:
         return os.open(path, mode)
     except OSError as e:
-        print >>sys.stderr, 'Could not open file {}: {}'.format(path, e)
-        sys.exit(1)
+	error('Could not open {}: {}'.format(path, e))
+
+def read_fd(fd, n):
+	try:
+		return os.read(fd, n)
+	except OSError as e:
+	        error('Could not read {} bytes from FD {}: {}'.format(n, fd, e))
+
+def write_fd(fd, data):
+	try:
+		return os.write(fd, data)
+	except OSError as e:
+		error('Could not write {} bytes from FD {}: {}'.format(len(data), fd, e))
+
 
 def error(message, exit_code=1):
     print >>sys.stderr, message
@@ -35,19 +46,30 @@ args = sys.argv[1:]
 
 for arg in args:
 	names, values = arg.split('=')
-	names = values
 
-print input_file
-print output_file
-print bs
+	if names == 'if':
+		input_file = open_fd(values, os.O_RDONLY)
+	if names == 'of':
+		output_file = open_fd(values, os.O_WRONLY|os.O_CREAT)
+	if names == 'count':
+		count = values
+	if names == 'bs':
+		bs = values
+	if (names == 'seek') and (output_file != 0):
+		seek = values
+		os.lseek(output_file, int(int(seek)*int(bs)), os.SEEK_SET)
+	if (names == 'skip') and (input_file != 0):
+		skip = values
+		os.lseek(input_file, int(int(skip)*int(bs)), os.SEEK_SET)
+
 # Main Execution
 
 
-open(input_file)
+data = read_fd(input_file, int(bs))
+while (count > 0) and data:
+	write_fd(output_file, data)
+	data = read_fd(input_file, int(bs))
+	count = int(count) - 1
 
-
-
-
-
-close(input_file)
-error('{} Not implemented!'.format(PROGRAM_NAME))
+os.close(input_file)
+os.close(output_file)
