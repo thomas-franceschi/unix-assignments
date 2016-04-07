@@ -4,7 +4,9 @@ Homework 08
 Activity 1:
 -----------
 
-1. The role of the parent process
+1. The role of the parent process is to watch the operation of the child as it executes the given 
+command. The parent accomplishes its task using os.wait and sigchld to monitor if it is still 
+running or not. The child uses low level system calls to execute the command given as an argument.
 
 2. The timeout mechanism worked by using an alarm that counted down from a set time and if 
 the proccess had not ended itself by the time the alarm was up, it was sent a SIGINT and 
@@ -22,7 +24,10 @@ and then checks to see if the string is empty. If the string is empty then it di
 properly and it returns a failure message and exits the test. If the string is not empty then 
 output was correctly sent to stderr, it displays a success message, and moves on to the next test.
 
-4. When you set seconds and the sleep argument to the same duration 
+4. When you set seconds and the sleep argument to the same duration as the command it throws an 
+error because everything times out at the same time the parent dies and since the parent takes 
+precedence over the child the program isnt sure if there is a child to kill when it goes to 
+terminate the child process
 
 Activity 2:
 ----------
