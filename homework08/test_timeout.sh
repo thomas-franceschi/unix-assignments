@@ -34,16 +34,26 @@ else
 fi
 
 #test for verbose output
-
+VERBOSE="$(./timeout.py -v 2>&1)"
+if [[ -z "$VERBOSE" ]] #Test for an empty string AKA no output to std error
+then
+	echo "Failed -v test!"
+	exit 1;
+else
+	echo "-v test successfu!"
+fi
 
 #test succesfull exit
-#while [ $N -lt 5 ]
-#do
-#	echo $N
-#	OUTPUT=$(./timeout.py -t 5 sleep $N)
-#	$(./timeout.py -t 5 sleep $N || echo Success)
-#	N=$(($N+1))
-#done
+while [ $N -lt 5 ]
+do
+	if[[ !$(./timeout.py -t 5 sleep $N) ]]
+    then
+        echo "Success test failed!"
+        exit 1;
+    fi
+	N=$(($N+1))
+done
+echo "Succes test completed successfully!"
 
 #test failure exit
 N=2
