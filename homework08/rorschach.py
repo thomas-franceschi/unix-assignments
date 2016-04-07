@@ -38,15 +38,15 @@ Options:
 
 
 def check_file(path, data):
-    '''This function checks each file to see if it matches any of the rules and then executes the action.'''
+    '''Checks each file to see if it matches the rules and then executes the action if so.'''
     if VERBOSE:
         print "Checking for pattern matches..."
     for x in data:
         if fnmatch.fnmatch(path, x['pattern']):
-            execute_action(path, x)
+            execute(path, x)
             
-def check_directory(data, dictionary):
-    '''This function walks the specified directory and checks each file if it matches any of the rules.'''
+def check_dir(data, dictionary):
+    '''Walks the specified directory and checks if each file matches any rules.'''
     for root, dirs, files in os.walk(DIRECTORIES):
         files = [f for f in files if not f[0] == '.']
         for name in files:
@@ -62,7 +62,7 @@ def check_directory(data, dictionary):
                 diction[fname] = os.path.getmtime(fname)
                 check_file(fname, data)
 
-def execute_action(path, data):
+def execute(path, data):
     '''This function executes the action.'''
     if VERBOSE:
         print "Forking process..."
@@ -127,7 +127,7 @@ if VERBOSE:
 
 try:
     while True:
-        check_directory(data, diction)
+        check_dir(data, diction)
 except KeyboardInterrupt:
     os.system('clear')
     sys.exit(0)

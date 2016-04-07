@@ -4,9 +4,11 @@ Homework 08
 Activity 1:
 -----------
 
-1. 
+1. The role of the parent process
 
-2.
+2. The timeout mechanism worked by using an alarm that counted down from a set time and if 
+the proccess had not ended itself by the time the alarm was up, it was sent a SIGINT and 
+the child was killed.
 
 3. The test script verifies the correctness of the program by running two while loops, one 
 for a set of tests that are supposedto exit succesfully, and a set that are supposed to fail. 
@@ -20,4 +22,36 @@ and then checks to see if the string is empty. If the string is empty then it di
 properly and it returns a failure message and exits the test. If the string is not empty then 
 output was correctly sent to stderr, it displays a success message, and moves on to the next test.
 
-4.
+4. When you set seconds and the sleep argument to the same duration 
+
+Activity 2:
+----------
+
+3. What data structure did you use to help detect changes to files and the logic 
+you used determine if a file was new or modified.
+
+1. I scanned the filesystem to ensure I checked the files in specific directories by using a 
+directories variable and starting there and walking all of the sub-directories in a function, 
+then using another function to check each individual file against the rules.
+
+2. I loaded the rules using a yaml file with a specified path, opening a stream to it, loading its 
+contents into a variable, then using the extracted information as the pattern to be checked against 
+in the functions for mathcing files.
+
+3. I used a dictionary to help detect changes to files and in order to determine if they were new or 
+modified I checked the modified time on each file against the epoch time when the program started and 
+if it was greater than (ie more recent) then the file must have been modified.
+
+4. I executed each action by taking the action command from the yaml data and making it a variable, 
+then forking the process and executing a system call that runs it with execvp.
+
+5. Busy waiting means that the programcontinues looping even when there is nothing to do. Under the 
+context of rorschach.py, this is when it is just watching the files and not executing any commands. 
+Busy waiting is not good because it wastes processor time and power that could be used on other 
+processes. This challenge could be alleviated by using system calls to block the processfrom running 
+until it is needed again, or to use a sleep timer so it runs on a consistent interval.
+
+Cache invalidation is when cache entries are explicitly deleted. This is useful because with rorschach.py 
+we are traversing a large number of files and as the number grows it may slow the system as it tries 
+to keep track of all of them. It could be implemented as a simple purge after each search cycle, or to 
+refresh the cache with each cycle.
